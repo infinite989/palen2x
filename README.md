@@ -3,7 +3,7 @@
 </p>
 <br>
 <p align="center">
-<strong>Linux distro that lets you install <a href="https://github.com/palera1n/palera1n">palera1n</a>.</strong><br>
+<strong>Linux distro that lets you install <a href="https://github.com/palera1n/palera1n">palera2n</a>.</strong><br>
     It aims to be easy to use, have a nice interface and support 32 and 64 bit CPUs.
 </p>
 <p align="center">
