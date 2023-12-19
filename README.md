@@ -49,7 +49,7 @@ cd palen2x
 sudo ./build.sh RELEASE
 ```
 
-##Important Notes
+## Important Notes
 **make sure to flash with dd flashing with iso mode will cause issues
 i recommend to use rufus to flash it**
 
