@@ -49,6 +49,10 @@ cd palen2x
 sudo ./build.sh RELEASE
 ```
 
+##Important Notes
+**make sure to flash with dd flashing with iso mode will cause issues
+i recommend to use rufus to flash it**
+
 ## Credits
 - Asineth for [checkn1x](https://github.com/asineth0/checkn1x)
 - raspberryenvoie for [odysseyn1x](https://github.com/raspberryenvoie/odysseyn1x)
