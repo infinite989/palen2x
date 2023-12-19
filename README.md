@@ -38,15 +38,15 @@
 
 ###### Older downloads can be found [here](https://cdn.nickchan.lol/palera1n/artifacts/palen1x/)
 
-## Building palen1x
+## Building palen2x
 To change the version of palen1x, either change `version` file, or manually specify it with `./build.sh`.
 
 Execute these commands on a Debian-based system.
 
 ```sh
-git clone https://github.com/palera1n/palen1x.git
-cd palen1x
-sudo ./build.sh
+git clone [https://github.com/shad0w999/palen2x.git]
+cd palen2x
+sudo ./build.sh RELEASE
 ```
 
 ## Credits
