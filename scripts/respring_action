@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Load functions and variables
+. /usr/bin/common
+# Display ssh logo
+ssh_logo
+
+cat << "EOF"
+Connect your iDevice to this computer
+EOF
+
+clear
+
+blue_echo 'Connecting to iDevice...'
+ssh -o "ProxyCommand=inetcat 22" -o "UserKnownHostsFile=/dev/null" root@iPhone "bash -c 'killall -9 SpringBoard'" || \
+    failed_echo 'Failed to SSH into your iDevice.'
+enter_to_quit
