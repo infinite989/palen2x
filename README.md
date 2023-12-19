@@ -44,7 +44,7 @@ To change the version of palen1x, either change `version` file, or manually spec
 Execute these commands on a Debian-based system.
 
 ```sh
-git clone [https://github.com/shad0w999/palen2x.git]
+git clone https://github.com/shad0w999/palen2x.git
 cd palen2x
 sudo ./build.sh RELEASE
 ```
