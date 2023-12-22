@@ -26,7 +26,7 @@ while true; do
     '1' 'Respring' \
     '2' 'UICache' \
     '3' 'Reload palera1n loader' \
-    '4' 'Exit' 4>&1 1>&2 2>&3)"
+    '4' 'Exit' 3>&1 1>&2 2>&3)"
   case "$CHOICE" in
     1)
       clear
