@@ -155,7 +155,7 @@ depmod -b rootfs $(ls rootfs/lib/modules)
 echo 'palen1x' > rootfs/etc/hostname
 echo "PATH=$PATH:$HOME/.local/bin" > rootfs/root/.bashrc # d
 echo "export PALEN1X_VERSION='$VERSION'" > rootfs/root/.bashrc
-echo '/usr/bin/palen1x_menu' >> rootfs/root/.bashrc
+echo '/usr/bin/palen2x_menu' >> rootfs/root/.bashrc
 echo "Rootless" > rootfs/usr/bin/.jbtype
 echo "" > rootfs/usr/bin/.args
 
@@ -177,7 +177,7 @@ ln -sv ../../etc/terminfo rootfs/usr/share/terminfo # fix ncurses
 cp -av rootfs/boot/vmlinuz-lts iso/boot/vmlinuz
 cat << ! > iso/boot/grub/grub.cfg
 insmod all_video
-echo 'palen1x $VERSION'
+echo 'palen2x $VERSION'
 linux /boot/vmlinuz quiet loglevel=3
 initrd /boot/initramfs.xz
 boot
@@ -190,4 +190,4 @@ find . | cpio -oH newc | xz -C crc32 --x86 -vz9eT$(nproc --all) > ../iso/boot/in
 popd
 
 # ISO creation
-grub-mkrescue -o "palen1x-$ARCH.iso" iso --compress=xz
+grub-mkrescue -o "palen2x-$ARCH.iso" iso --compress=xz
