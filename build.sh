@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # palen1x build script
 # Made with <3 https://github.com/palera1n/palen1x
@@ -46,9 +46,41 @@ until [ "$ARCH" = 'amd64' ] || [ "$ARCH" = 'i686' ] || [ "$ARCH" = 'aarch64' ] |
     [ -z "$input_arch" ] && ARCH='amd64'
 done
 
-# Install dependencies to build palen1x
-apt-get update
-apt-get install -y --no-install-recommends wget gawk debootstrap mtools xorriso ca-certificates curl libusb-1.0-0-dev gcc make gzip xz-utils unzip libc6-dev
+# Check if dependencies to build palen1x/palen2x have been installed
+# Use the method from @lebao3105's lfsbuild (probably from internet)
+echo "Checking for dependencies..."
+echo "You need wget, gawk, ~~debootstrap~~, mtools, xorriso, ca-certificates, curl, cpio"
+echo "gzip, xz-utils, unzip, libc6/glibc, libusb-1.0"
+echo "Note that not all dependencies can be checked here, but commands this script runs will help."
+arr=(
+	wget curl gawk xorriso gzip xz unzip mtools update-ca-certificates
+    cpio
+)
+notfound=()
+found=()
+
+for i in ${arr[@]}; do
+	command -v $i >/dev/null 2>&1
+	if [[ $? == 1 ]]; then
+		notfound+=($i)
+	else
+		found+=($i)
+	fi
+done
+
+echo "Installed:"
+for j in ${found[@]}; do
+	echo $j
+done
+
+echo "Missing:"
+for l in ${notfound[@]}; do
+    echo $l
+done
+
+#apt-get update
+#apt-get install -y --no-install-recommends wget gawk debootstrap mtools xorriso ca-certificates curl libusb-1.0-0-dev gcc make gzip xz-utils unzip libc6-dev
+
 
 # Get proper files
 if [ "$1" = "RELEASE" ]; then
@@ -169,7 +201,8 @@ chmod +x rootfs/usr/bin/palera1n
 # Copy files
 cp -av ../inittab rootfs/etc
 cp -v ../scripts/* rootfs/usr/bin
-chmod -v 755 rootfs/usr/local/bin/*
+# Who left rootfs/usr/local/bin while scripts are placed in rootfs/usr/bin?
+chmod -v 755 rootfs/usr/bin/*
 ln -sv sbin/init rootfs/init
 ln -sv ../../etc/terminfo rootfs/usr/share/terminfo # fix ncurses
 
