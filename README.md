@@ -41,17 +41,19 @@
 ## Building palen2x
 To change the version of palen1x, either change `version` file, or manually specify it with `./build.sh`.
 
-Execute these commands on a Debian-based system.
-
 ```sh
 git clone https://github.com/shad0w999/palen2x.git
 cd palen2x
 sudo ./build.sh RELEASE
 ```
 
+The iso will be placed in work/.
+
 ## Important Notes
 **make sure to flash with dd flashing with iso mode will cause issues
 i recommend to use rufus to flash it**
+
+Ventoy works too, but booting with GRUB mode may required.
 
 ## Credits
 - Asineth for [checkn1x](https://github.com/asineth0/checkn1x)

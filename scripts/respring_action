@@ -4,13 +4,13 @@
 # Display ssh logo
 ssh_logo
 
-cat << "EOF"
-Connect your iDevice to this computer
-EOF
-
+echo "Connect your iDevice to this computer"
+read -p "Enter to continue."
 clear
 
 blue_echo 'Connecting to iDevice...'
-ssh -o "ProxyCommand=inetcat 22" -o "UserKnownHostsFile=/dev/null" root@iPhone "bash -c 'killall -9 SpringBoard'" || \
+# Can respring as the mobile user
+ssh -o "ProxyCommand=inetcat 22" -o "UserKnownHostsFile=/dev/null" \
+    mobile@iPhone "bash -c 'killall -9 SpringBoard'" || \
     failed_echo 'Failed to SSH into your iDevice.'
 enter_to_quit

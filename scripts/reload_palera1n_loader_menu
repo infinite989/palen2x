@@ -11,6 +11,7 @@ EOF
 clear
 
 blue_echo 'Connecting to iDevice...'
-ssh -o "ProxyCommand=inetcat 22" -o "UserKnownHostsFile=/dev/null" root@iPhone "bash -c 'uicache -fp /cores/binpack/Applications/palera1nLoader.app'" || \
+ssh -o "ProxyCommand=inetcat 22" -o "UserKnownHostsFile=/dev/null" \
+    root@iPhone "bash -c 'uicache -fp /cores/binpack/Applications/palera1nLoader.app'" || \
     failed_echo 'Failed to SSH into your iDevice.'
 enter_to_quit
