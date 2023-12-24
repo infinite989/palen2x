@@ -49,12 +49,13 @@ done
 # Check if dependencies to build palen1x/palen2x have been installed
 # Use the method from @lebao3105's lfsbuild (probably from internet)
 echo "Checking for dependencies..."
-echo "You need wget, gawk, ~~debootstrap~~, mtools, xorriso, ca-certificates, curl, cpio"
-echo "gzip, xz-utils, unzip, libc6/glibc, libusb-1.0"
-echo "Note that not all dependencies can be checked here, but commands this script runs will help."
+echo "You need wget, gawk, mtools, xorriso, ca-certificates, curl, cpio"
+echo "gzip, xz-utils, unzip"
+echo "This is an INCOMPLETED list of dependencies"
+echo "and therefore there may be errors indicating that you need somethings."
+echo "Until I remove this message, create an issue and tell us what you got."
 arr=(
-	wget curl gawk xorriso gzip xz unzip mtools update-ca-certificates
-    cpio
+	wget curl gawk xorriso gzip xz unzip mtools cpio
 )
 notfound=()
 found=()
@@ -149,6 +150,7 @@ mount -vt proc proc rootfs/proc
 cp /etc/resolv.conf rootfs/etc
 cat << ! > rootfs/etc/apk/repositories
 http://dl-cdn.alpinelinux.org/alpine/v3.12/main
+http://dl-cdn.alpinelinux.org/alpine/edge/main
 http://dl-cdn.alpinelinux.org/alpine/edge/community
 http://dl-cdn.alpinelinux.org/alpine/edge/testing
 !
@@ -158,7 +160,7 @@ sleep 2
 cat << ! | chroot rootfs /usr/bin/env PATH=/usr/bin:/usr/local/bin:/bin:/usr/sbin:/sbin /bin/sh
 apk update
 apk upgrade
-apk add bash alpine-base usbmuxd ncurses udev openssh-client sshpass newt
+apk add bash alpine-base usbmuxd ncurses udev openssh-client sshpass newt gcompat
 apk add --no-scripts linux-lts linux-firmware-none
 rc-update add bootmisc
 rc-update add hwdrivers
