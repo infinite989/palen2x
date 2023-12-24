@@ -49,13 +49,13 @@ done
 # Check if dependencies to build palen1x/palen2x have been installed
 # Use the method from @lebao3105's lfsbuild (probably from internet)
 echo "Checking for dependencies..."
-echo "You need wget, gawk, mtools, xorriso, ca-certificates, curl, cpio"
-echo "gzip, xz-utils, unzip"
+echo "You need wget, gawk, mtools, xorriso, curl, cpio"
+echo "gzip, xz-utils, unzip, findutils"
 echo "This is an INCOMPLETED list of dependencies"
 echo "and therefore there may be errors indicating that you need somethings."
 echo "Until I remove this message, create an issue and tell us what you got."
 arr=(
-	wget curl gawk xorriso gzip xz unzip mtools cpio
+	wget curl gawk xorriso gzip xz unzip mtools cpio find
 )
 notfound=()
 found=()
@@ -78,10 +78,6 @@ echo "Missing:"
 for l in ${notfound[@]}; do
     echo $l
 done
-
-#apt-get update
-#apt-get install -y --no-install-recommends wget gawk debootstrap mtools xorriso ca-certificates curl libusb-1.0-0-dev gcc make gzip xz-utils unzip libc6-dev
-
 
 # Get proper files
 if [ "$1" = "RELEASE" ]; then
@@ -150,7 +146,6 @@ mount -vt proc proc rootfs/proc
 cp /etc/resolv.conf rootfs/etc
 cat << ! > rootfs/etc/apk/repositories
 http://dl-cdn.alpinelinux.org/alpine/v3.12/main
-http://dl-cdn.alpinelinux.org/alpine/edge/main
 http://dl-cdn.alpinelinux.org/alpine/edge/community
 http://dl-cdn.alpinelinux.org/alpine/edge/testing
 !
@@ -160,7 +155,7 @@ sleep 2
 cat << ! | chroot rootfs /usr/bin/env PATH=/usr/bin:/usr/local/bin:/bin:/usr/sbin:/sbin /bin/sh
 apk update
 apk upgrade
-apk add bash alpine-base usbmuxd ncurses udev openssh-client sshpass newt gcompat
+apk add bash alpine-base usbmuxd ncurses udev openssh-client sshpass newt
 apk add --no-scripts linux-lts linux-firmware-none
 rc-update add bootmisc
 rc-update add hwdrivers
@@ -202,9 +197,10 @@ chmod +x rootfs/usr/bin/palera1n
 
 # Copy files
 cp -av ../inittab rootfs/etc
-cp -v ../scripts/* rootfs/usr/bin
+chmod -v 755 ../scripts/*
+cp -pv ../scripts/* rootfs/usr/bin
 # Who left rootfs/usr/local/bin while scripts are placed in rootfs/usr/bin?
-chmod -v 755 rootfs/usr/bin/*
+# chmod -v 755 rootfs/usr/bin/*
 ln -sv sbin/init rootfs/init
 ln -sv ../../etc/terminfo rootfs/usr/share/terminfo # fix ncurses
 
