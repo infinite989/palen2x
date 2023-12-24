@@ -32,7 +32,7 @@
 ## Information
 **Make an [iCloud/iTunes backup](https://support.apple.com/en-us/HT203977) before using, so that you can go back if something goes wrong**.
 
-- Downloads for palen2x can be found [here](https://github.com/shad0w999/palen2x/releases). 
+- Downloads for palen2x can be found [here](https://github.com/infinite989/palen2x/releases). 
 
 - Guide for palen2x can be found [here](https://ios.cfw.guide/using-palen1x/).
 
@@ -42,7 +42,7 @@
 To change the version of palen1x, either change `version` file, or manually specify it with `./build.sh`.
 
 ```sh
-git clone https://github.com/shad0w999/palen2x.git
+git clone https://github.com/infinite989/palen2x.git
 cd palen2x
 sudo ./build.sh RELEASE
 ```
@@ -75,4 +75,4 @@ Ventoy works too, but booting with GRUB mode may required.
 - Asineth for [checkn1x](https://github.com/asineth0/checkn1x)
 - raspberryenvoie for [odysseyn1x](https://github.com/raspberryenvoie/odysseyn1x)
 - [Everyone else who contributed to palen1x](https://github.com/palera1n/palen1x/graphs/contributors)
-- ImmortalShad0w for adding and improving palen1x [palen2x](https://github.com/shad0w999/palen2x)
+- ImmortalShad0w for adding and improving palen1x [palen2x](https://github.com/infinite989/palen2x)
