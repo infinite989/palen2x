@@ -49,12 +49,13 @@ done
 # Check if dependencies to build palen1x/palen2x have been installed
 # Use the method from @lebao3105's lfsbuild (probably from internet)
 echo "Checking for dependencies..."
-echo "You need wget, gawk, ~~debootstrap~~, mtools, xorriso, ca-certificates, curl, cpio"
-echo "gzip, xz-utils, unzip, libc6/glibc, libusb-1.0"
-echo "Note that not all dependencies can be checked here, but commands this script runs will help."
+echo "You need wget, gawk, mtools, xorriso, curl, cpio"
+echo "gzip, xz-utils, unzip, findutils"
+echo "This is an INCOMPLETED list of dependencies"
+echo "and therefore there may be errors indicating that you need somethings."
+echo "Until I remove this message, create an issue and tell us what you got."
 arr=(
-	wget curl gawk xorriso gzip xz unzip mtools update-ca-certificates
-    cpio
+	wget curl gawk xorriso gzip xz unzip mtools cpio find
 )
 notfound=()
 found=()
@@ -77,10 +78,6 @@ echo "Missing:"
 for l in ${notfound[@]}; do
     echo $l
 done
-
-#apt-get update
-#apt-get install -y --no-install-recommends wget gawk debootstrap mtools xorriso ca-certificates curl libusb-1.0-0-dev gcc make gzip xz-utils unzip libc6-dev
-
 
 # Get proper files
 if [ "$1" = "RELEASE" ]; then
@@ -200,9 +197,10 @@ chmod +x rootfs/usr/bin/palera1n
 
 # Copy files
 cp -av ../inittab rootfs/etc
-cp -v ../scripts/* rootfs/usr/bin
+chmod -v 755 ../scripts/*
+cp -pv ../scripts/* rootfs/usr/bin
 # Who left rootfs/usr/local/bin while scripts are placed in rootfs/usr/bin?
-chmod -v 755 rootfs/usr/bin/*
+# chmod -v 755 rootfs/usr/bin/*
 ln -sv sbin/init rootfs/init
 ln -sv ../../etc/terminfo rootfs/usr/share/terminfo # fix ncurses
 

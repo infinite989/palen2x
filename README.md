@@ -49,6 +49,22 @@ sudo ./build.sh RELEASE
 
 The iso will be placed in work/.
 
+## Run palen2x locally
+
+Only for palera1n supported OSes (and probably Windows doesnot get invited, sorry)
+
+Get whiptail first.
+
+Get this repo cloned (if you haven't before), "cd" to it, then run these as root:
+
+```bash
+# find ./scripts -type f -not -iname 'inetcat' -exec cp -p '{}' '/usr/bin' ';'
+# echo "Rootless" > /usr/bin/.jbtype
+# echo "" > /usr/bin/.args
+```
+
+Start by running palen2x_menu.
+
 ## Important Notes
 **make sure to flash with dd flashing with iso mode will cause issues
 i recommend to use rufus to flash it**
